@@ -1,0 +1,17 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: StressChaos
+metadata:
+  name: cpu-stress-experiment
+  namespace: default
+spec:
+  mode: one
+  duration: "60s"
+  selector:
+    namespaces:
+      - default
+    labelSelectors:
+      app: recommendationservice   # overwritten at runtime by chaos_client.py
+  stressors:
+    cpu:
+      workers: 2
+      load: 80

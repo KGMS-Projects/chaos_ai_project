@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/mnt/c/Users/KGMS com 1/Downloads/chaos_ai_project_fixed/chaos_fixed/chaos-env/bin/python3" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from fontTools.subset import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())

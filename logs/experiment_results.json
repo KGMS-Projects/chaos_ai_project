@@ -1,0 +1,167 @@
+{
+  "round": 3,
+  "phase": "next_round",
+  "cluster_snapshot": {
+    "total_pods": 12,
+    "running": 12,
+    "not_running": 0,
+    "high_restarts": [],
+    "pods": [
+      {
+        "name": "adservice-64dd5464b8-4jjvx",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "adservice",
+          "pod-template-hash": "64dd5464b8"
+        }
+      },
+      {
+        "name": "cartservice-7956c8c845-rd6sw",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "cartservice",
+          "pod-template-hash": "7956c8c845"
+        }
+      },
+      {
+        "name": "checkoutservice-dcf4c5c7b-4lh56",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "checkoutservice",
+          "pod-template-hash": "dcf4c5c7b"
+        }
+      },
+      {
+        "name": "currencyservice-8fdf6cf9d-h8dl6",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "currencyservice",
+          "pod-template-hash": "8fdf6cf9d"
+        }
+      },
+      {
+        "name": "emailservice-588bb96b8-c2bsg",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "emailservice",
+          "pod-template-hash": "588bb96b8"
+        }
+      },
+      {
+        "name": "frontend-759775d795-8vfz4",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "frontend",
+          "pod-template-hash": "759775d795"
+        }
+      },
+      {
+        "name": "loadgenerator-5c7cbd94ff-vc7p6",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "loadgenerator",
+          "pod-template-hash": "5c7cbd94ff"
+        }
+      },
+      {
+        "name": "paymentservice-66c65775b-wdgk7",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "paymentservice",
+          "pod-template-hash": "66c65775b"
+        }
+      },
+      {
+        "name": "productcatalogservice-c4cfd98fb-dspj5",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "productcatalogservice",
+          "pod-template-hash": "c4cfd98fb"
+        }
+      },
+      {
+        "name": "recommendationservice-b5b5bfc56-j87td",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "recommendationservice",
+          "pod-template-hash": "b5b5bfc56"
+        }
+      },
+      {
+        "name": "redis-cart-6899b65948-tx6hj",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "redis-cart",
+          "pod-template-hash": "6899b65948"
+        }
+      },
+      {
+        "name": "shippingservice-5dcc4d7bd-lt5rs",
+        "phase": "Running",
+        "restarts": 0,
+        "labels": {
+          "app": "shippingservice",
+          "pod-template-hash": "5dcc4d7bd"
+        }
+      }
+    ]
+  },
+  "chaos_history": [
+    {
+      "round": 1,
+      "experiment": "pod_kill",
+      "target": "cartservice",
+      "reason": "No experiments have been run yet, so starting with a pod kill on cartservice to verify its restart recovery and resilience to sudden failure.",
+      "success": false
+    },
+    {
+      "round": 2,
+      "experiment": "network_delay",
+      "target": "paymentservice",
+      "reason": "Testing paymentservice timeout handling with network latency since it hasn't been tested yet and network_delay varies the experiment type from the previous pod_kill.",
+      "success": false
+    },
+    {
+      "round": 3,
+      "experiment": "cpu_stress",
+      "target": "productcatalogservice",
+      "reason": "Testing productcatalogservice resource throttling under CPU stress since it hasn't been tested yet and cpu_stress varies the experiment type from previous rounds.",
+      "success": false
+    }
+  ],
+  "last_injection": {
+    "round": 3,
+    "experiment": "cpu_stress",
+    "target": "productcatalogservice",
+    "reason": "Testing productcatalogservice resource throttling under CPU stress since it hasn't been tested yet and cpu_stress varies the experiment type from previous rounds.",
+    "success": false
+  },
+  "sentinel_assessment": {
+    "verdict": "healthy",
+    "summary": "All SLIs are within thresholds with zero error rate, zero P99 latency, and no pod restarts observed during the recovery window. The CPU stress experiment on productcatalogservice failed to inject, and all 12 pods are running normally with no signs of degradation.",
+    "action": "none"
+  },
+  "sli_readings": [
+    {
+      "error_rate": 0.0,
+      "p99_latency_ms": 0.0,
+      "pod_restarts": 0,
+      "timestamp": "2026-06-14T20:12:56.328477",
+      "elapsed_s": 0,
+      "k8s_healthy": true
+    }
+  ],
+  "remediation_record": {},
+  "experiment_log": []
+}
